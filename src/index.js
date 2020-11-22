@@ -20,8 +20,8 @@ const loadBtn = new LoadMoreButton({
 const refs = getRefs();
 
 refs.searchForm.addEventListener("submit", onSearch);
+// loadBtn.refs.button.addEventListener('click', fetchImages);
 loadBtn.refs.button.addEventListener('click', onLoadButtonMore);
-// loadBtn.refs.button.addEventListener('click', scrollDocument);
 
 
 const apiService = new ApiService();
@@ -63,20 +63,33 @@ function fetchImages() {
         if (hits.length > 0) {
             renderGallery(hits)
             loadBtn.enableBtn();
-            return;
         }
         
     });
 }
 
-async function onLoadButtonMore() {
-    const renderPage = await fetchImages();
-    const documentHeight = await window.pageYOffset;
+function onLoadButtonMore() {
+    fetchImages();
+    onScrollTo();
+}
+
+function scrollDocument() {
+    const documentHeight = window.pageYOffset;
     console.log(documentHeight);
     const screenHeight = document.documentElement.clientHeight;
     console.log(screenHeight);
-    const nextPage = window.scrollBy(0, 700);
-    // return nextPage;
+    const scrollPoint = screenHeight + documentHeight;
+    return scrollPoint;
+}
+
+
+function onScrollTo() {
+    
+    window.scrollTo({
+        top: scrollDocument(),
+        left: 0,
+        behavior: 'smooth'
+    });
 }
 
 
