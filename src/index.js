@@ -20,7 +20,6 @@ const loadBtn = new LoadMoreButton({
 const refs = getRefs();
 
 refs.searchForm.addEventListener("submit", onSearch);
-// loadBtn.refs.button.addEventListener('click', fetchImages);
 loadBtn.refs.button.addEventListener('click', onLoadButtonMore);
 
 
@@ -73,24 +72,18 @@ function onLoadButtonMore() {
     onScrollTo();
 }
 
-function scrollDocument() {
-    const documentHeight = window.pageYOffset;
-    console.log(documentHeight);
-    const screenHeight = document.documentElement.clientHeight;
-    console.log(screenHeight);
-    const scrollPoint = screenHeight + documentHeight;
-    return scrollPoint;
-}
-
-
 function onScrollTo() {
-    
-    window.scrollTo({
-        top: scrollDocument(),
+    let value = document.body.scrollHeight;
+    console.log(value);
+     setTimeout(() => {
+      window.scrollTo({
+        top: value,
         left: 0,
-        behavior: 'smooth'
-    });
+        behavior: 'smooth',
+      });
+    }, 1000);
 }
+
 
 
 
