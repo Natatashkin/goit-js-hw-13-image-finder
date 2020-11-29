@@ -27,7 +27,7 @@ function onSearch(event) {
 }
 
 
-function renderGallery(hits) {
+export function renderGallery(hits) {
     refs.imagesContainer.insertAdjacentHTML('beforeend', photoCardTpl(hits))
 }
 
