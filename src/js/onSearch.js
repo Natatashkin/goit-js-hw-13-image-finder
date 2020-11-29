@@ -3,6 +3,7 @@ import ApiService from './apiService';
 import photoCardTpl from '../templates/photo-card.hbs';
 import { loadBtn } from './loadButton';
 import { notification } from './notify';
+import { onImageClick } from './onModal';
 
 
 const refs = getRefs();
@@ -24,6 +25,7 @@ function onSearch(event) {
     apiService.resetPage();
     clearGallery();
     fetchImages();
+    
 }
 
 

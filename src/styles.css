@@ -93,6 +93,9 @@ body {
   opacity: 1;
   pointer-events: initial;
 }
+.lightbox-content {
+  position: relative;
+}
 
 .lightbox-overlay {
   position: absolute;
@@ -129,4 +132,11 @@ body {
 .lightbox-closer:focus {
   background-color: darkslategray;
   cursor: pointer;
+}
+
+.preloader {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50% -50%);
 }

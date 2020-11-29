@@ -1,15 +1,15 @@
 import getRefs from './getRefs';
-import ApiService from './apiService';
-import photoCardTpl from '../templates/photo-card.hbs';
-import renderGallery from './onSearch';
+import '../images/830.gif';
+// import ApiService from './apiService';
+// import photoCardTpl from '../templates/photo-card.hbs';
+// import renderGallery from './onSearch';
 
 const refs = getRefs();
 
 const lightboxRef = document.querySelector('.lightbox');
-const overlay = document.querySelector('.lightbox-overlay');
-const lightboxContent = document.querySelector('.lightbox-content');
 const lightboxCloser = document.querySelector('.lightbox-closer');
 const lightboxImage = document.querySelector('.lightbox-image');
+const preloader = document.querySelector('.js-preloader');
 
 refs.imagesContainer.addEventListener('click', onModalOpen);
 lightboxCloser.addEventListener('click', onCloseBtnModal);
@@ -20,16 +20,19 @@ function onImageClick(event) {
 }
 
 function onModalOpen(event) {
-  
-  setTimeout(() => {
-    event.preventDefault();
+  event.preventDefault();
   if (event.target.nodeName !== "IMG") {
-        return;
-    }
-    lightboxRef.classList.add('is-open');
+    return;
+  };
+  
+  lightboxImage.src = '../images/830.gif';
+  // lightboxImage.width = "100";
+  lightboxRef.classList.add('is-open');
+
+  lightboxImage.onload = function () {
+    // removePreloader();
     onChangeLightboxImageUrl(event);
-    
-  }, 500);
+  }
 }
 
 function onCloseBtnModal() {
@@ -47,3 +50,6 @@ function removeImageAtr() {
   lightboxImage.removeAttribute('src');
 }
 
+function removePreloader() {
+  preloader.classList.add('is-hidden');
+}
