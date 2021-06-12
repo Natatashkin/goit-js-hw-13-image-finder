@@ -41,6 +41,7 @@ function onCloseBtnModal() {
 function onChangeLightboxImageUrl(event) {
   if (lightboxRef.classList.contains('is-open')) {
     lightboxImage.src = onImageClick(event);
+    console.log(lightboxImage.src);
   }
 }
 
