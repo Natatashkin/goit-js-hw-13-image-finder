@@ -1,4 +1,4 @@
-import '../styles.css'
+import '../styles.css';
 import getRefs from './getRefs';
 import '../images/830.gif';
 // import ApiService from './apiService';
@@ -10,11 +10,10 @@ const refs = getRefs();
 const lightboxRef = document.querySelector('.lightbox');
 const lightboxCloser = document.querySelector('.lightbox-closer');
 const lightboxImage = document.querySelector('.lightbox-image');
-const preloaderRef = document.querySelector('.js-preloader');
+// const preloaderRef = document.querySelector('.js-preloader');
 
 refs.imagesContainer.addEventListener('click', onModalOpen);
 lightboxCloser.addEventListener('click', onCloseBtnModal);
-
 
 function onImageClick(event) {
   return event.target.dataset.source;
@@ -22,25 +21,25 @@ function onImageClick(event) {
 
 function onModalOpen(event) {
   event.preventDefault();
-  if (event.target.nodeName !== "IMG") {
+  if (event.target.nodeName !== 'IMG') {
     return;
-  };
+  }
 
   showPreloader();
   lightboxRef.classList.add('is-open');
   lightboxImage.onload = function () {
-      removePreloader();
-      onChangeLightboxImageUrl(event);
-  }
+    removePreloader();
+    onChangeLightboxImageUrl(event);
+  };
 }
 
 function onCloseBtnModal() {
   lightboxRef.classList.remove('is-open');
-  removeImageAtr()
+  removeImageAtr();
 }
 
 function onChangeLightboxImageUrl(event) {
-  if (lightboxRef.classList.contains("is-open")) {
+  if (lightboxRef.classList.contains('is-open')) {
     lightboxImage.src = onImageClick(event);
   }
 }
@@ -50,12 +49,10 @@ function removeImageAtr() {
 }
 
 function showPreloader() {
-  lightboxImage.classList.add('preloader')
+  lightboxImage.classList.add('preloader');
   lightboxImage.src = '../images/830.gif';
 }
 
 function removePreloader() {
   lightboxImage.classList.remove('preloader');
 }
-
-
